@@ -14,7 +14,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.resources.Identifier;
-import org.lwjgl.glfw.GLFW;
+import org.lwjgl.sdl.SDLScancode;
 
 import java.io.File;
 import java.io.FileReader;
@@ -77,16 +77,16 @@ public class JustArmourClient implements ClientModInitializer {
 		// Toggle HUD keybind (G)
 		toggleHudKeybind = KeyMappingHelper.registerKeyMapping(new KeyMapping(
 				"key.justarmour.toggle",
-				InputConstants.Type.KEYSYM,
-				GLFW.GLFW_KEY_G,
+				InputConstants.Type.KEYBOARD,
+				SDLScancode.SDL_SCANCODE_G,
 				JUSTARMOUR_CATEGORY
 		));
 
 		// Config Screen keybind (J)
 		openConfigScreenKeybind = KeyMappingHelper.registerKeyMapping(new KeyMapping(
 				"key.justarmour.config",
-				InputConstants.Type.KEYSYM,
-				GLFW.GLFW_KEY_J,
+				InputConstants.Type.KEYBOARD,
+				SDLScancode.SDL_SCANCODE_J,
 				JUSTARMOUR_CATEGORY
 		));
 

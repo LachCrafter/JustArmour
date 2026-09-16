@@ -15,6 +15,7 @@ public class HudEditorScreen extends Screen {
     private boolean draggingArmor = false;
     private boolean draggingHeldItem = false;
     private boolean draggingOffhandItem = false;
+    private static final int MOUSE_LEFTCLICK = 1;
 
     protected HudEditorScreen() {
         super(Component.literal("HUD Editor"));
@@ -30,7 +31,7 @@ public class HudEditorScreen extends Screen {
             double mouseY = click.y();
             int button = click.button();
 
-            if (button == 0) {
+            if (button == MOUSE_LEFTCLICK) {
                 // Check offhand item box first
                 if (shouldShowOffhandItem() && isInsideOffhandItemBox(mouseX, mouseY)) {
                     draggingOffhandItem = true;
@@ -58,7 +59,7 @@ public class HudEditorScreen extends Screen {
 
         ScreenMouseEvents.beforeMouseRelease(this).register((screen, click) -> {
             int button = click.button();
-            if (button == 0 && (draggingArmor || draggingHeldItem || draggingOffhandItem)) {
+            if (button == MOUSE_LEFTCLICK && (draggingArmor || draggingHeldItem || draggingOffhandItem)) {
                 draggingArmor = false;
                 draggingHeldItem = false;
                 draggingOffhandItem = false;
